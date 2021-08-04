@@ -60,8 +60,8 @@ final class NoticiaRepository extends AbstractRepository
         $limit = 10;
         $query = sprintf(self::QUERY_SELECT_BY_PAGE, TABLE_NEWS, TABLE_USER);
         $sql = self::prepare($query);
-        $r = $sql->execute([
-            'limit' => $limit,
+        $sql->execute([
+            'limit' => self::LIMIT_DEFAULT,
             'offset' => $page * $limit
         ]);
         return $sql->fetchAll();

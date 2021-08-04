@@ -72,9 +72,9 @@
 
                             <div class="nav-item d-flex align-items-center">
 
-                                <button class="btn" title="Criar noticia" data-toggle="modal"
+                                <button class="btn" title="Criar noticia" data-toggle="tooltip"
                                     data-target="#form-de-criacao" @click="$refs.painelCriarNoticia.abrirPainel()">
-                                    <i class="fas fa-edit fa-lg"></i>
+                                    <strong>Criar publicação</strong> <i class="fas fa-edit fa-lg"></i>
                                 </button>
 
                             </div>
@@ -98,48 +98,48 @@
         </div>
 
         <main>
-            <div class="container-lg" v-for="index in range" :key="index">
+            <div class="container-lg">
                 <div class="row">
                     <div class="col">
                         <div
-                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 row-cols-xl-4 justify-content-around">
-                            <simple-card :noticia="noticias[index-1]"></simple-card>
-                            <simple-card :noticia="noticias[index]"></simple-card>
-                            <simple-card :noticia="noticias[index+1]"></simple-card>
-                            <simple-card :noticia="noticias[index+2]"></simple-card>
+                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 row-cols-xl-4 justify-content-around" >
+                            <simple-card v-for="noticia in noticias" :key="noticia.post_id" :noticia="noticia"></simple-card>
+                            <!-- <simple-card :noticia="array[1]"></simple-card>
+                            <simple-card :noticia="array[2]"></simple-card>
+                            <simple-card :noticia="array[3]"></simple-card> -->
                         </div>
                     </div>
                 </div>
     
-                <div class="row">
+                <!-- <div class="row" v-else-if="array.length == 2">
                     <div class="col">
                         <div
                             class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 justify-content-around">
-                            <simple-card :noticia="noticias[index+3]" class="col-md-6 col-xl-7"></simple-card>
-                            <simple-card :noticia="noticias[index+4]" class="col-md-6 col-xl-5"></simple-card>
+                            <simple-card :noticia="array[0]" class="col-md-6 col-xl-7"></simple-card>
+                            <simple-card :noticia="array[1]" class="col-md-6 col-xl-5"></simple-card>
                         </div>
                     </div>
                 </div>
     
-                <div class="row">
+                <div class="row" v-else-if="array.length == 3">
                     <div class="col">
                         <div
                             class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-around">
-                            <simple-card :noticia="noticias[index+5]"></simple-card>
-                            <simple-card :noticia="noticias[index+6]"></simple-card>
-                            <simple-card :noticia="noticias[index+7]" class="col-md-12 col-sm-12 col-12 col-lg-4"></simple-card>
+                            <simple-card :noticia="array[0]"></simple-card>
+                            <simple-card :noticia="array[1]"></simple-card>
+                            <simple-card :noticia="array[2]" class="col-md-12 col-sm-12 col-12 col-lg-4"></simple-card>
                         </div>
                     </div>
                 </div>
     
-                <div class="row">
+                <div class="row" v-else-if="array.length == 1">
                     <div class="col">
                         <div
                             class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 justify-content-around">
-                            <simple-card :noticia="noticias[index+8]"></simple-card>
+                            <simple-card :noticia="array[0]"></simple-card>
                         </div>
                     </div>
-                </div>
+                </div> -->
     
             </div>
         </main>

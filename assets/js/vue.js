@@ -62,24 +62,5 @@
                 this.$refs.painelLerNoticias.abrirPainel()
             }
         },
-        computed: {
-            // usuarioEAdmin() {
-            //     const { nivel_permissao } = this.user;
-            //     return nivel_permissao == 8;
-            // },
-            // usuarioPrimeiroNome() {
-            //     const { nome } = this.user;
-            //     return nome ? nome.split(" ")[0] : "";
-            // },
-            // usuarioEstaLogado() {
-            //     const { nivel_permissao } = this.user
-            //     return !nivel_permissao == 4;
-            // },
-            range(){
-                const quantNoticias = this.noticias.length;
-                const retorno = quantNoticias < 10 ? 1 : (quantNoticias/10) + 1
-                return retorno;
-            }
-        }
     });
 })();
