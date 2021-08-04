@@ -20,7 +20,10 @@
                 const url = this.endpoints.noticia;
                 const urlAbsoluto = `${url}?pagina=${pagina}`;
                 fetch(urlAbsoluto, { method: "GET" })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        if(response.ok) return response.json();
+                        else return [];
+                    })
                     .then((noticias) => {
                         this.noticias = noticias;
                     });

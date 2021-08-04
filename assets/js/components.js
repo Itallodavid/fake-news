@@ -18,7 +18,6 @@
                 this.$root.apagarNoticia(post_id);
             },
             verNoticiaCompleta(){
-                console.log(this.noticia.post_id)
                 this.$root.verNoticiaCompleta(this.noticia)
             }
         },
@@ -267,9 +266,7 @@
                 const formData = new FormData(form);
                 const { id } = 1; //this.noticia.autor_id;
                 formData.append("autor_id", id);
-                fetch(url , { method: "POST", body: formData });
-                console.log(url)
-                this.$root.obterNoticias();
+                fetch(url , { method: "POST", body: formData }).then(response => this.$root.obterNoticias());
                 this.$parent.fecharPainel();
             },
             atualizar(noticia) {

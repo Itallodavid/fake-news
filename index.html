@@ -19,7 +19,7 @@
         <painel-dinamico ref="painelLerNoticias">
            <div class="row p-2">
                 <div class="col-12">
-                    <img :src="noticiaVista.imagem" :alt="noticiaVista.titulo" class="img-fluid"  style="height: 160px; object-fit: cover; width: max-content;">
+                    <img :src="noticiaVista.imagem" :alt="noticiaVista.titulo" class="img-fluid"  style="height: 160px; object-fit: cover; width: inherit;">
                 </div>
 
                 <div class="row">
@@ -48,7 +48,7 @@
             <nav class="navbar navbar-expand-md navbar-light bg-warning">
                 <div class="container-fluid">
                     <!-- LOGO -->
-                    <div class="navbar-brand d-flex flex-row" @click="$refs.painelLerNoticias.abrirPainel()">
+                    <div class="navbar-brand d-flex flex-row">
                         <img src="./assets/images/fake-new-logo.png" width="50" height="50" alt="Fake News Logo" />
 
                         <div class="d-flex flex-column p-0 ml-2">
