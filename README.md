@@ -2,7 +2,8 @@
 ## CRUD em PHP
 
 ### Instalação
-- versão recomendada do PHP >= 7.4
+- Versão recomendada do PHP >= 7.4
+- Conceda permissão para a pasta `/source/images` , sem a permissão as imagens não poderão ser armazenadas.
 - Crie as tabelas no banco de dados,
 o arquivo SQL com toda a estrutura se encontra em `source/database/tabelas.sql`
 - Configure o acesso PDO ao banco de dados, utilize o arquivo que se encontra em `source/configs/bancoDadosConfig.php`
