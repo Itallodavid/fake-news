@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br" style="width: 100vw; height: 100vh;">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Fake News</title>
+</head>
+
+<body style="padding-top: 70px; background-image: url('./assets/images/tile_background.png'); overflow-x: hidden;">
+
+    <section id="app" class="d-flex flex-column justify-content-between h-100">
+
+        <painel-dinamico ref="painelLerNoticias">
+           <div class="row p-2">
+                <div class="col-12">
+                    <img :src="noticiaVista.imagem" :alt="noticiaVista.titulo" class="img-fluid"  style="height: 160px; object-fit: cover; width: max-content;">
+                </div>
+
+                <div class="row">
+                    <div class="mt-3 col-12">
+                        <h3 class="mb-1">{{ noticiaVista.titulo }}</h3>
+                        <span style="font-size: 0.9em;" class="text-secondary"> {{ noticiaVista.autor_nome }}</span>
+                    </div>
+                </div>
+
+
+                <div class="col-12 mt-4">
+                    <p style="word-wrap: break-word;">
+                        {{ noticiaVista.conteudo }}
+                    </p>
+                </div>
+           </div>
+        </painel-dinamico>
+
+        <painel-dinamico ref="painelCriarNoticia">
+            <formulario-noticia ref="formNoticia" class="bg-warning p-4 text-dark rounded">
+
+            </formulario-noticia>
+        </painel-dinamico>
+
+        <header class="fixed-top shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light bg-warning">
+                <div class="container-fluid">
+                    <!-- LOGO -->
+                    <div class="navbar-brand d-flex flex-row" @click="$refs.painelLerNoticias.abrirPainel()">
+                        <img src="./assets/images/fake-new-logo.png" width="50" height="50" alt="Fake News Logo" />
+
+                        <div class="d-flex flex-column p-0 ml-2">
+                            <strong>Fake News</strong>
+
+                            <span class="font-italic" style="font-size: 0.8rem">
+                                O maior portal de noticias do mundo.
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- TOGGLE -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navToggle"
+                        aria-controls="navToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- NAV -->
+                    <div class="collapse navbar-collapse" id="navToggle">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+                            <div class="nav-item d-flex align-items-center">
+
+                                <button class="btn" title="Criar noticia" data-toggle="modal"
+                                    data-target="#form-de-criacao" @click="$refs.painelCriarNoticia.abrirPainel()">
+                                    <i class="fas fa-edit fa-lg"></i>
+                                </button>
+
+                            </div>
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </header>
+
+        <div class="jumbotron jumbotron-fluid bg-transparent mb-0 mt-5 position-relative overflow-hidden">
+            <div class="container">
+                <h1 class="display-4">Boas Vindas</h1>
+                <p class="lead">
+                    Ao maior portal de noticias do universo.
+                </p>
+            </div>
+            <img class="position-absolute" src="./assets/images/fake-new-logo.png" width="280" height="280" alt="logo"
+                style="top: 30px; right: -45px; opacity: 0.4;">
+        </div>
+
+        <main>
+            <div class="container-lg" v-for="index in range" :key="index">
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 row-cols-xl-4 justify-content-around">
+                            <simple-card :noticia="noticias[index-1]"></simple-card>
+                            <simple-card :noticia="noticias[index]"></simple-card>
+                            <simple-card :noticia="noticias[index+1]"></simple-card>
+                            <simple-card :noticia="noticias[index+2]"></simple-card>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 justify-content-around">
+                            <simple-card :noticia="noticias[index+3]" class="col-md-6 col-xl-7"></simple-card>
+                            <simple-card :noticia="noticias[index+4]" class="col-md-6 col-xl-5"></simple-card>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-around">
+                            <simple-card :noticia="noticias[index+5]"></simple-card>
+                            <simple-card :noticia="noticias[index+6]"></simple-card>
+                            <simple-card :noticia="noticias[index+7]" class="col-md-12 col-sm-12 col-12 col-lg-4"></simple-card>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col">
+                        <div
+                            class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 justify-content-around">
+                            <simple-card :noticia="noticias[index+8]"></simple-card>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </main>
+
+    </section>
+
+    <footer>
+        <div class="jumbotron jumbotron-fluid bg-warning mb-0 mt-5 position-relative overflow-hidden">
+            <div class="container">
+                <h1 class="display-4">Fake news</h1>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel exercitationem hic,
+                    mollitia cumque ipsa consectetur veritatis totam ex aut eveniet quae praesentium nostrum
+                    doloremque atque asperiores alias repudiandae voluptas. Ea?</p>
+            </div>
+            <img class="position-absolute" src="./assets/images/fake-new-logo.png" width="280" height="280"
+                alt="logo" style="top: 30px; right: -45px; opacity: 0.4;">
+        </div>
+    </footer>
+
+    <script src="./assets/js/lib/vue.js"></script>
+    <script src="./assets/js/components.js"></script>
+    <script src="./assets/js/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+        integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+    <script>
+        $(() => $('[data-toggle="tooltip"]').tooltip());
+    </script>
+</body>
+
+</html>
